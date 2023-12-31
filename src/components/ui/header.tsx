@@ -24,28 +24,28 @@ const Header = () => {
             <SheetHeader className="text-lg font-bold sm:text-center">
               Menu
             </SheetHeader>
-            <div className="mt-2 flex flex-col gap-4">
+            <div className="mt-2 flex flex-col gap-2">
               <Button className="w-full gap-1 text-left">
                 <LogInIcon size={16} />
                 Login
               </Button>
               <Button
                 variant={"outline"}
-                className="w-full justify-start gap-1 text-left"
+                className="w-full justify-start gap-2 text-left"
               >
                 <HomeIcon size={16} />
                 Home
               </Button>
               <Button
                 variant={"outline"}
-                className="w-full justify-start gap-1 text-left"
+                className="w-full justify-start gap-2 text-left"
               >
                 <TagIcon size={16} />
                 Offers
               </Button>
               <Button
                 variant={"outline"}
-                className="w-full justify-start gap-1 text-left"
+                className="w-full justify-start gap-2 text-left"
               >
                 <LayoutListIcon size={16} />
                 Catalog
@@ -53,7 +53,7 @@ const Header = () => {
             </div>
           </SheetContent>
         </Sheet>
-        <h1 className="cursor-pointer text-lg">
+        <h1 className="cursor-pointer text-3xl text-nowrap">
           <span className="font-bold text-primary">FWS </span>Store
         </h1>
         <Button size="icon" variant={"outline"}>

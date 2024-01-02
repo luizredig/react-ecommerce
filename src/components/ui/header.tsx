@@ -15,6 +15,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./sheet";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 const Header = () => {
   const { data, status } = useSession();
@@ -76,13 +77,15 @@ const Header = () => {
 
               <Separator />
 
-              <Button
-                variant={"outline"}
-                className="w-full justify-start gap-2 text-left"
-              >
-                <HomeIcon size={16} />
-                Home
-              </Button>
+              <Link href={"/"}>
+                <Button
+                  variant={"outline"}
+                  className="w-full justify-start gap-2 text-left"
+                >
+                  <HomeIcon size={16} />
+                  Home
+                </Button>
+              </Link>
 
               <Button
                 variant={"outline"}
@@ -91,14 +94,16 @@ const Header = () => {
                 <TagIcon size={16} />
                 Offers
               </Button>
-
-              <Button
-                variant={"outline"}
-                className="w-full justify-start gap-2 text-left"
-              >
-                <LayoutListIcon size={16} />
-                Catalog
-              </Button>
+              
+              <Link href={"/catalog"}>
+                <Button
+                  variant={"outline"}
+                  className="w-full justify-start gap-2 text-left"
+                >
+                  <LayoutListIcon size={16} />
+                  Catalog
+                </Button>
+              </Link>
             </div>
           </SheetContent>
         </Sheet>

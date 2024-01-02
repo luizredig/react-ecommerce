@@ -3,7 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/ui/header";
 import { AuthProvider } from "@/providers/auth";
-import Footer from "@/components/footer";
+import Footer from "@/components/ui/footer";
 
 const poppins = Poppins({
   subsets: ["latin"],

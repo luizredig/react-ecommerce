@@ -3,21 +3,13 @@ import Image from "next/image";
 import { Badge } from "./badge";
 import { ArrowDownIcon } from "lucide-react";
 import { prismaClient } from "@/lib/prisma";
+import { productsImages } from "@/helpers/productsImages";
 
 interface ProductItemProps {
   product: ProductWithTotalPrice;
 }
 
 const ProductItem = async ({ product }: ProductItemProps) => {
-  const productsImages = {
-    mouses: "/mx-master-3s.png",
-    monitors: "/monitor-redragon.png",
-    headphones: "/JBL_Quantum.png",
-    mousepads: "/logitech-mouse-pad.png",
-    keyboards: "/mx-keys-mini.png",
-    speakers: "/logitech-speakers.png",
-  };
-
   const category = await prismaClient.category.findUniqueOrThrow({
     where: {
       id: product.categoryId,
@@ -29,7 +21,6 @@ const ProductItem = async ({ product }: ProductItemProps) => {
       <div className="flex max-w-[156px] flex-col gap-4 ">
         <div className="relative flex h-[170px] w-[156px] items-center justify-center rounded-lg bg-accent">
           <Image
-            // src="/JBL_Quantum.png"
             src={productsImages[category.slug as keyof typeof productsImages]}
             alt={product.name}
             height={0}

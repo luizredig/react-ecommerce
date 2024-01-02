@@ -11,7 +11,13 @@ import {
 } from "lucide-react";
 import { Button } from "./button";
 import { Card } from "./card";
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./sheet";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTrigger,
+} from "./sheet";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
@@ -77,39 +83,50 @@ const Header = () => {
 
               <Separator />
 
-              <Link href={"/"}>
-                <Button
-                  variant={"outline"}
-                  className="w-full justify-start gap-2 text-left"
-                >
-                  <HomeIcon size={16} />
-                  Home
-                </Button>
-              </Link>
+              <SheetClose asChild>
+                <Link href={"/"}>
+                  <Button
+                    variant={"outline"}
+                    className="w-full justify-start gap-2 text-left"
+                  >
+                    <HomeIcon size={16} />
+                    Home
+                  </Button>
+                </Link>
+              </SheetClose>
 
-              <Button
-                variant={"outline"}
-                className="w-full justify-start gap-2 text-left"
-              >
-                <TagIcon size={16} />
-                Offers
-              </Button>
-              
-              <Link href={"/catalog"}>
-                <Button
-                  variant={"outline"}
-                  className="w-full justify-start gap-2 text-left"
-                >
-                  <LayoutListIcon size={16} />
-                  Catalog
-                </Button>
-              </Link>
+              <SheetClose asChild>
+                <Link href={"/category/headphones"}>
+                  <Button
+                    variant={"outline"}
+                    className="w-full justify-start gap-2 text-left"
+                  >
+                    <TagIcon size={16} />
+                    Offers
+                  </Button>
+                </Link>
+              </SheetClose>
+
+              <SheetClose asChild>
+                <Link href={"/catalog"}>
+                  <Button
+                    variant={"outline"}
+                    className="w-full justify-start gap-2 text-left"
+                  >
+                    <LayoutListIcon size={16} />
+                    Catalog
+                  </Button>
+                </Link>
+              </SheetClose>
             </div>
           </SheetContent>
         </Sheet>
-        <h1 className="cursor-pointer text-nowrap text-3xl">
-          <span className="font-bold text-primary">FWS </span>Store
-        </h1>
+
+        <Link href={"/"}>
+          <h1 className="cursor-pointer text-nowrap text-3xl">
+            <span className="font-bold text-primary">FWS </span>Store
+          </h1>
+        </Link>
 
         <div className="flex items-center gap-2">
           {status === "authenticated" && data?.user?.image && (
@@ -123,6 +140,7 @@ const Header = () => {
               </Avatar>
             </div>
           )}
+
           <Button size="icon" variant={"outline"}>
             <ShoppingCartIcon />
           </Button>

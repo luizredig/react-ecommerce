@@ -21,10 +21,13 @@ export default async function Home() {
     },
   });
 
-  const headphonesOnSale = await prismaClient.product.findMany({
+  const mousesOnSale = await prismaClient.product.findMany({
     where: {
       category: {
-        slug: "headphones",
+        slug: "mouses",
+      },
+      discountPercentage: {
+        gt: 0,
       },
     },
   });
@@ -62,8 +65,8 @@ export default async function Home() {
         />
 
         <div>
-          <SectionTitle>Headphones</SectionTitle>
-          <ProductCarousel products={headphonesOnSale} />
+          <SectionTitle>Mouses</SectionTitle>
+          <ProductCarousel products={mousesOnSale} />
         </div>
       </div>
     </>

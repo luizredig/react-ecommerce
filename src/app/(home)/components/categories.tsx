@@ -1,5 +1,5 @@
 import { prismaClient } from "@/lib/prisma";
-import CategoryItem from "./category-item";
+import CategoryFilterItem from "./category-filter-item";
 
 const Categories = async () => {
   const categories = await prismaClient.category.findMany({});
@@ -7,7 +7,7 @@ const Categories = async () => {
     <>
       <div className="grid grid-cols-2 gap-4">
         {categories.map((category) => (
-          <CategoryItem key={category.id} category={category} />
+          <CategoryFilterItem key={category.id} category={category} />
         ))}
       </div>
     </>

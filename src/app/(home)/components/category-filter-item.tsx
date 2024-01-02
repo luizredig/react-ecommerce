@@ -11,11 +11,11 @@ import {
   SquareIcon,
 } from "lucide-react";
 
-interface CategoryItemProps {
+interface CategoryFilterItemProps {
   category: Category;
 }
 
-const CategoryItem = ({ category }: CategoryItemProps) => {
+const CategoryFilterItem = ({ category }: CategoryFilterItemProps) => {
   const categoryIcon = {
     keyboards: <KeyboardIcon size={16}/>,
     monitors: <MonitorIcon size={16}/>,
@@ -36,4 +36,4 @@ const CategoryItem = ({ category }: CategoryItemProps) => {
   );
 };
 
-export default CategoryItem;
+export default CategoryFilterItem;

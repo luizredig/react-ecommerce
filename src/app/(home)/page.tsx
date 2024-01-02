@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Categories from "./components/categories";
 import { prismaClient } from "@/lib/prisma";
 import ProductCarousel from "./components/product-carousel";
@@ -14,7 +13,7 @@ export default async function Home() {
     },
   });
 
-  const keyboards = await prismaClient.product.findMany({
+  const keyboardsOnSale = await prismaClient.product.findMany({
     where: {
       category: {
         slug: "keyboards",
@@ -22,30 +21,50 @@ export default async function Home() {
     },
   });
 
+  const headphonesOnSale = await prismaClient.product.findMany({
+    where: {
+      category: {
+        slug: "headphones",
+      },
+    },
+  });
+
   return (
     <>
-      <PromoBanner
-        src="/banner-home-01.png"
-        alt="Até 55% de desconto. Só esse mês!"
-      />
+      <div className="flex flex-col gap-8">
+        <PromoBanner
+          src="/banner-home-01.png"
+          alt="Até 55% de desconto. Só esse mês!"
+        />
 
-      <div className="mt-8 px-5">
-        <Categories />
-      </div>
+        <div className="px-5">
+          <Categories />
+        </div>
 
-      <div className="mt-8">
-        <SectionTitle>Ofertas</SectionTitle>
-        <ProductCarousel products={productsOnSale} />
-      </div>
+        <div>
+          <SectionTitle>Ofertas</SectionTitle>
+          <ProductCarousel products={productsOnSale} />
+        </div>
 
-      <PromoBanner
-        src="/banner-mouses.png"
-        alt="Até 55% de desconto em mouses!"
-      />
+        <PromoBanner
+          src="/banner-mouses.png"
+          alt="Até 55% de desconto em mouses!"
+        />
 
-      <div className="mt-8">
-        <SectionTitle>Teclados</SectionTitle>
-        <ProductCarousel products={keyboards} />
+        <div>
+          <SectionTitle>Teclados</SectionTitle>
+          <ProductCarousel products={keyboardsOnSale} />
+        </div>
+
+        <PromoBanner
+          src="/banner-headphones.png"
+          alt="Até 55% de desconto em headphones!"
+        />
+
+        <div>
+          <SectionTitle>Headphones</SectionTitle>
+          <ProductCarousel products={headphonesOnSale} />
+        </div>
       </div>
     </>
   );

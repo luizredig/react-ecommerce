@@ -1,6 +1,6 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Category } from "@prisma/client";
 import {
   HeadphonesIcon,
@@ -26,13 +26,13 @@ const CategoryItem = ({ category }: CategoryItemProps) => {
   };
 
   return (
-    <Badge
+    <Button
       variant={"outline"}
       className="flex items-center justify-center gap-2 rounded-lg py-3"
     >
       {categoryIcon[category.slug as keyof typeof categoryIcon]}
       <span className="text-xs font-bold">{category.name}</span>
-    </Badge>
+    </Button>
   );
 };
 

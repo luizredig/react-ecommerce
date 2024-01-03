@@ -4,6 +4,7 @@ import { Badge } from "./badge";
 import { ArrowDownIcon } from "lucide-react";
 import { prismaClient } from "@/lib/prisma";
 import { productsImages } from "@/helpers/productsImages";
+import Link from "next/link";
 
 interface ProductItemProps {
   product: ProductWithTotalPrice;
@@ -18,6 +19,7 @@ const ProductItem = async ({ product }: ProductItemProps) => {
 
   return (
     <>
+    <Link href={`/product/${product.slug}`}>
       <div className="flex flex-col gap-4 ">
         <div className="relative flex h-[170px] w-full items-center justify-center rounded-lg bg-accent md:h-[500px] lg:h-[500px]">
           <Image
@@ -64,6 +66,7 @@ const ProductItem = async ({ product }: ProductItemProps) => {
           </div>
         </div>
       </div>
+    </Link>
     </>
   );
 };

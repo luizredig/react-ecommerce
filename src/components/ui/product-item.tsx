@@ -19,7 +19,7 @@ const ProductItem = async ({ product }: ProductItemProps) => {
   return (
     <>
       <div className="flex flex-col gap-4 ">
-        <div className="relative flex h-[170px] w-full items-center justify-center rounded-lg bg-accent">
+        <div className="relative flex h-[170px] w-full items-center justify-center rounded-lg bg-accent md:h-[500px] lg:h-[500px]">
           <Image
             src={productsImages[category.slug as keyof typeof productsImages]}
             alt={product.name}
@@ -33,7 +33,7 @@ const ProductItem = async ({ product }: ProductItemProps) => {
           />
 
           {product.discountPercentage > 0 && (
-            <Badge className="absolute left-2 top-2 px-2 py-[2px]">
+            <Badge className="absolute left-2 top-2 px-2 py-[2px] md:px-4 md:py-[4px] md:text-lg lg:px-4 lg:py-[4px] lg:text-lg">
               <ArrowDownIcon size={14} />
               {product.discountPercentage} %
             </Badge>

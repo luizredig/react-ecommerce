@@ -1,3 +1,4 @@
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image, { ImageProps } from "next/image";
 
 const PromoBanner = ({ src, alt, ...props }: ImageProps) => {
@@ -8,7 +9,7 @@ const PromoBanner = ({ src, alt, ...props }: ImageProps) => {
         height={0}
         width={0}
         priority
-        className="h-auto w-full px-5"
+        className="m-auto h-auto w-full max-w-[80%] px-5"
         sizes="100vw"
         alt={alt}
         {...props}

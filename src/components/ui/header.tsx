@@ -36,7 +36,7 @@ const Header = () => {
 
   return (
     <>
-      <Card className="flex items-center justify-between p-[1.875rem]">
+      <Card className="fixed left-0 right-0 top-0 z-10 flex items-center justify-between rounded-none p-[1.875rem] min-w-[320px]">
         <Sheet>
           <SheetTrigger asChild>
             <Button size="icon" variant={"outline"}>
@@ -128,23 +128,21 @@ const Header = () => {
           </h1>
         </Link>
 
-        <div className="flex items-center gap-2">
-          {status === "authenticated" && data?.user?.image && (
-            <div className="flex items-center gap-2">
-              <Avatar className="select-none">
-                <AvatarFallback>
-                  {data.user.name?.[0].toUpperCase()}
-                </AvatarFallback>
+        <Button size="icon" variant={"outline"}>
+          <ShoppingCartIcon />
+        </Button>
 
-                {data.user.image && <AvatarImage src={data.user.image} />}
-              </Avatar>
-            </div>
-          )}
+        {status === "authenticated" && data?.user?.image && (
+          <div className="hidden absolute right-20 items-center gap-2 md:flex">
+            <Avatar className="select-none">
+              <AvatarFallback>
+                {data.user.name?.[0].toUpperCase()}
+              </AvatarFallback>
 
-          <Button size="icon" variant={"outline"}>
-            <ShoppingCartIcon />
-          </Button>
-        </div>
+              {data.user.image && <AvatarImage src={data.user.image} />}
+            </Avatar>
+          </div>
+        )}
       </Card>
     </>
   );
